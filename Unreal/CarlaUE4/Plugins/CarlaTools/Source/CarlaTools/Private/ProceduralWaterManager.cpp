@@ -17,7 +17,7 @@
 #include "Engine/World.h"
 #include "UObject/ConstructorHelpers.h"
 
-// Sets default values
+// 设置默认值
 UProceduralWaterManager::UProceduralWaterManager()
 {
    // Pass
@@ -75,11 +75,11 @@ FString UProceduralWaterManager::RiverGeneration(const FProceduralRiversMetaInfo
   {
     if(Line == "# _")
     {
-      // Important IF to add last point for every spline
-      // Uses data from previus iteration
+      // 为每个样条添加最后一个点的重要 IF
+      // 使用来自先前迭代的数据
       if(IterationNumber != 0 && IterationNumber != -1)
       {
-        // Add Last point to river spline
+        // 将最后一个点添加到河流样条线
         FSplinePoint Location(InputKeyCount, PreviusPosition);
         if(RiverActor != nullptr)
           AddRiverPointFromCode(RiverActor, Location); // Last Point
@@ -129,7 +129,7 @@ FString UProceduralWaterManager::RiverGeneration(const FProceduralRiversMetaInfo
     IterationNumber++;
   }
 
-  // Last river created must be destroyed as it is a wildcard
+  // 最后创建的河流必须销毁，因为它是通配符
   if(RiverActor != nullptr)
     RiverActor->Destroy();
 
